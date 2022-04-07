@@ -1,0 +1,2 @@
+# OptimalizactionOfFunctionOfTwoVariables
+Repository for university work
