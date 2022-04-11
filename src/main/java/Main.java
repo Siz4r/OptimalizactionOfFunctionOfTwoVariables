@@ -1,10 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println(FunctionAndDeriratives.fun(10, 12));
-        System.out.println(FunctionAndDeriratives.derirativeAfterX(10, 12));
-        System.out.println(FunctionAndDeriratives.derirativeAfterY(10, 12));
-        System.out.println(FunctionAndDeriratives.derirativeAfterXAndY(10, 12));
-        System.out.println(FunctionAndDeriratives.doubleDerirativeAfterX(10, 12));
-        System.out.println(FunctionAndDeriratives.doubleDerirativeAfterY(10, 12));
+        var newtons = new NewtonsMethod(new FunctionOfTwoVariablesCommand(
+                0.1, new Vector(10, 12)
+        ));
+
+        Object str = "Hello world!";
+        var str2 = str;
+
+        System.out.println(str + " | " + str2);
+
+        System.out.println(newtons.calculate());
     }
 }

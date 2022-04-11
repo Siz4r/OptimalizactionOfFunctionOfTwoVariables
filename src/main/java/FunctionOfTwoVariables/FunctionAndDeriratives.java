@@ -1,3 +1,5 @@
+package FunctionOfTwoVariables;
+
 public class FunctionAndDeriratives {
     private final static double h = 0.00001;
 

@@ -1,21 +1,17 @@
 public class FunctionOfTwoVariablesCommand {
-    private final double x, y, epsilon;
+    private final double epsilon;
+    private final Vector startingPoint;
 
-    public FunctionOfTwoVariablesCommand(double x, double y, double epsilon) {
-        this.x = x;
-        this.y = y;
+    public FunctionOfTwoVariablesCommand(double epsilon, Vector startingPoint) {
         this.epsilon = epsilon;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
+        this.startingPoint = startingPoint;
     }
 
     public double getEpsilon() {
         return epsilon;
+    }
+
+    public Vector getStartingPoint() {
+        return startingPoint;
     }
 }
