@@ -4,8 +4,8 @@ public class FunctionAndDeriratives {
     private final static double h = 0.00001;
 
     public static double fun(double x, double y) {
-//        return 3 * Math.pow(x, 3.0) - x * y + y * y - 2 * y + 1;
-        return 10 * Math.pow(x, 2.0) + 12 * x * y + 10 * Math.pow(y, 2.0);
+        return 3 * Math.pow(x, 3.0) - x * y + y * y - 2 * y + 1;
+//        return 10 * Math.pow(x, 2.0) + 12 * x * y + 10 * Math.pow(y, 2.0);
     }
 
     public static double derirativeAfterX(double x, double y) {
