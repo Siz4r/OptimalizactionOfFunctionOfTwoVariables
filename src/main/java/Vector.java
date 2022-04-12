@@ -6,6 +6,12 @@ public class Vector {
         this.y = y;
     }
 
+    public Vector(Vector v) {
+        this.x = v.getX();
+        this.y = v.getY();
+
+    }
+
     public double getX() {
         return x;
     }
