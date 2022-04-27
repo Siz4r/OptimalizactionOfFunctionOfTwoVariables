@@ -34,6 +34,7 @@ public class SteepestDescentMethod extends FunctionOfTwoVariablesMethods{
 
         }while (!stopCondition(vectorBefore, vectorAfter));
 
+        System.out.println("Metoda największego spadku");
         System.out.println("Liczba iteracji: " + iteracje);
         return vectorAfter;
     }

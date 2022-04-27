@@ -43,6 +43,7 @@ public class NewtonsMethod extends FunctionOfTwoVariablesMethods{
             iteracje++;
         } while (!stopCondition(vectorBefore, vectorAfter));
 
+        System.out.println("Metoda Newtona");
         System.out.println("Liczba iteracji: " + iteracje);
 
         return vectorAfter;

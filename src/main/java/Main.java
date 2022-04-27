@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         var command  = new FunctionOfTwoVariablesCommand(
 
-                0.00001, new Vector(10, 10)
+                0.0000001, new Vector(10, 10)
         );
 
         var methods = List.of(new NewtonsMethod(command),

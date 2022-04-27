@@ -18,10 +18,10 @@ public class GaussSeidlMethod extends FunctionOfTwoVariablesMethods{
             y = tangentMethod.calculateStycznychPoY(x);
             vector.setX(derirativeAfterX(x, y));
             vector.setY(derirativeAfterY(x, y));
-            System.out.println(vector);
-        } while(!stopCondition(vector) && iteracje < 200);
+        } while(!stopCondition(vector));
 
 
+        System.out.println("Metoda Gaussa");
         System.out.println("Liczba iteracji: " + iteracje);
         return new Vector(x, y);
     }
