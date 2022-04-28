@@ -24,28 +24,27 @@ public class HookJeevesaMethod extends FunctionOfTwoVariablesMethods {
             var valueOfFunctionInSecondBasePoint = fun(vectorB); //krok 1
             iteracje++;
 
-            var vectorJ = new Vector(vector0.getX() + e * ksi[j].getX(),
-                    vector0.getY() + e * ksi[j].getY());
+            var vectorJ = moveVectorToRight(j, vector0);
 
             var f = fun(vectorJ);
 
             if (f < valueOfFunctionInFirstBasePoint) {
                 valueOfFunctionInFirstBasePoint = f;
-                vector0 = new Vector(vectorJ);
             } else {
                 vectorJ = new Vector(vectorJ.getX() - 2 * e * ksi[j].getX(),
                         vectorJ.getY() - 2 * e * ksi[j].getY());
+
                 f = fun(vectorJ);
 
                 if (f < valueOfFunctionInFirstBasePoint) {
                     valueOfFunctionInFirstBasePoint = f;
-                    vector0 = new Vector(vectorJ);
                 } else {
-                    vectorJ = new Vector(vectorJ.getX() + e * ksi[j].getX(),
-                            vectorJ.getY() + e * ksi[j].getY());
-                    vector0 = new Vector(vectorJ);
+                    vectorJ = moveVectorToRight(j, vectorJ);
                 }
+
             }
+
+            vector0 = vectorJ;
 
             if (j == 1) {
                 if (valueOfFunctionInSecondBasePoint > valueOfFunctionInFirstBasePoint) {
@@ -54,6 +53,7 @@ public class HookJeevesaMethod extends FunctionOfTwoVariablesMethods {
 
                     vector0 = new Vector(2 * vectorB.getX() - vectorB0.getX(),
                             2 * vectorB.getY() - vectorB0.getY());
+
                 } else if (e > command.getEpsilon()){
                     e *= 0.5;
                     vector0 = vectorB;
@@ -65,5 +65,10 @@ public class HookJeevesaMethod extends FunctionOfTwoVariablesMethods {
 
             j = j != 1 ? 1 : 0;
         } while (true);
+    }
+
+    private Vector moveVectorToRight(int j, Vector vector0) {
+        return new Vector(vector0.getX() + e * ksi[j].getX(),
+                vector0.getY() + e * ksi[j].getY());
     }
 }
