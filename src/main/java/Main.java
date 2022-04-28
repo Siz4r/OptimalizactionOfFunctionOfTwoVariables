@@ -10,7 +10,8 @@ public class Main {
 
         var methods = List.of(new NewtonsMethod(command),
                 new SteepestDescentMethod(command),
-                new GaussSeidlMethod(command));
+                new GaussSeidlMethod(command),
+                new HookJeevesaMethod(command));
 
         for (var method :
                 methods) {

@@ -6,9 +6,7 @@ public class HookJeevesaMethod extends FunctionOfTwoVariablesMethods {
     private final Vector[] ksi =
             {new Vector(1, 0), new Vector(0, 1)};
 
-    private final double stepChangeFactor = 0.9;
-    private final double e = 1.0;
-    private final int n = 1;
+    private double e = 0.5;
 
     public HookJeevesaMethod(FunctionOfTwoVariablesCommand command) {
         super(command);
@@ -16,33 +14,56 @@ public class HookJeevesaMethod extends FunctionOfTwoVariablesMethods {
 
     @Override
     Vector calculate() {
-        var vectorJ1 = new Vector(command.getStartingPoint());
-        var vecotrJ2 = new Vector(command.getStartingPoint());
-        var valueOfFunctionInFirstBasePoint = fun(vectorJ1);
-        int j = 0;
+        int j = 0; //krok 1
+        var vector0 = new Vector(command.getStartingPoint());
+        var vectorB = new Vector(command.getStartingPoint());
+        var vectorB0 = new Vector(command.getStartingPoint());
 
         do {
-            var valueOfFunctionInSecondBasePoint = fun(vecotrJ2);
-            var vectorJ = new Vector(vectorJ1.getX() + e * ksi[j].getX(),
-                    vectorJ1.getY() + e * ksi[j].getY());
+            var valueOfFunctionInFirstBasePoint = fun(vector0);
+            var valueOfFunctionInSecondBasePoint = fun(vectorB); //krok 1
+            iteracje++;
 
-            var temp = fun(vectorJ);
+            var vectorJ = new Vector(vector0.getX() + e * ksi[j].getX(),
+                    vector0.getY() + e * ksi[j].getY());
 
-            if (temp < valueOfFunctionInFirstBasePoint) {
-                valueOfFunctionInFirstBasePoint = temp;
+            var f = fun(vectorJ);
+
+            if (f < valueOfFunctionInFirstBasePoint) {
+                valueOfFunctionInFirstBasePoint = f;
+                vector0 = new Vector(vectorJ);
             } else {
-                vectorJ = new Vector(vectorJ1.getX() - 2 * e * ksi[j].getX(),
-                        vectorJ1.getY() - 2 * e * ksi[j].getY());
-                temp = fun(vectorJ1);
-                if (temp < valueOfFunctionInFirstBasePoint) {
-                    valueOfFunctionInFirstBasePoint = temp;
+                vectorJ = new Vector(vectorJ.getX() - 2 * e * ksi[j].getX(),
+                        vectorJ.getY() - 2 * e * ksi[j].getY());
+                f = fun(vectorJ);
+
+                if (f < valueOfFunctionInFirstBasePoint) {
+                    valueOfFunctionInFirstBasePoint = f;
+                    vector0 = new Vector(vectorJ);
                 } else {
-                    vectorJ = new Vector(vectorJ1.getX() + e * ksi[j].getX(),
-                            vectorJ1.getY() + e * ksi[j].getY());
+                    vectorJ = new Vector(vectorJ.getX() + e * ksi[j].getX(),
+                            vectorJ.getY() + e * ksi[j].getY());
+                    vector0 = new Vector(vectorJ);
                 }
             }
 
-            j = j != n ? 1 : 0;
+            if (j == 1) {
+                if (valueOfFunctionInSecondBasePoint > valueOfFunctionInFirstBasePoint) {
+                    vectorB0 = vectorB;
+                    vectorB = vectorJ;
+
+                    vector0 = new Vector(2 * vectorB.getX() - vectorB0.getX(),
+                            2 * vectorB.getY() - vectorB0.getY());
+                } else if (e > command.getEpsilon()){
+                    e *= 0.5;
+                    vector0 = vectorB;
+                } else {
+                    System.out.println("Liczba iteracji: " + iteracje);
+                    return vector0;
+                }
+            }
+
+            j = j != 1 ? 1 : 0;
         } while (true);
     }
 }

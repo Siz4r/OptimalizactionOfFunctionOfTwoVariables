@@ -6,6 +6,7 @@ public class FunctionAndDeriratives {
     private final static double h = 0.00001;
 
     public static double fun(double x, double y) {
+//        return 2.5 * Math.pow((x * x - y), 2.0) + Math.pow((1 -x), 2.0);
         return 3 * Math.pow(x, 3.0) - x * y + y * y - 2 * y + 1;
     }
 
