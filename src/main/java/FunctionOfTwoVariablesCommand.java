@@ -1,3 +1,5 @@
+import vector.Vector;
+
 public class FunctionOfTwoVariablesCommand {
     private final double epsilon;
     private final Vector startingPoint;

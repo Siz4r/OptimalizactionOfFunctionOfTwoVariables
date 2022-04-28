@@ -1,3 +1,5 @@
+import vector.Vector;
+
 import static FunctionOfTwoVariables.FunctionAndDeriratives.*;
 
 public class NewtonsMethod extends FunctionOfTwoVariablesMethods{
