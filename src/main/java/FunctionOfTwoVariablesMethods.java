@@ -1,3 +1,5 @@
+import vector.Vector;
+
 import static FunctionOfTwoVariables.FunctionAndDeriratives.derirativeAfterX;
 import static FunctionOfTwoVariables.FunctionAndDeriratives.derirativeAfterY;
 
